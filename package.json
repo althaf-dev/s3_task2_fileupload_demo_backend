@@ -1,0 +1,19 @@
+{
+  "name": "s3_upload_task1_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/althaf-dev/s3_task2_fileupload_demo_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/althaf-dev/s3_task2_fileupload_demo_backend/issues"
+  },
+  "homepage": "https://github.com/althaf-dev/s3_task2_fileupload_demo_backend#readme"
+}
