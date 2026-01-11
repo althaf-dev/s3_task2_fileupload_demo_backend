@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/althaf-dev/s3_task2_fileupload_demo_backend#readme",
   "dependencies": {
+    "@aws-sdk/cloudfront-signer": "^3.966.0",
     "aws-sdk": "^2.1693.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
