@@ -3,6 +3,7 @@ const {
   getPresigneds3url,
   storeKeysInDb,
   getSignedCookiesFromCloudFront,
+  getSignedurlForImages,
 } = require('../service/service');
 const { asyncHandler } = require('../middlware/errorHandler');
 
@@ -39,16 +40,7 @@ router.post(
 router.get(
   '/view',
   asyncHandler(async (req, res, next) => {
-    const {cookies,images} = await getSignedCookiesFromCloudFront();
-    console.log('recived ', cookies);
-    Object.entries(cookies).forEach(([name, value]) => {
-      res.cookie(name, value, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'None',
-        path: '/',
-      });
-    });
+    const images = await getSignedurlForImages()
 
     res.status(200).json({
       message: 'created signed cookies',

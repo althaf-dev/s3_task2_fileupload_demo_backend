@@ -23,6 +23,7 @@ app.use('/upload', router);
 
 
 app.use((err,req,res,next)=>{
+  console.log(err)
   const status = err?.status || 500
   res.status(status).json({
     message: err?.message || "something went wrong "

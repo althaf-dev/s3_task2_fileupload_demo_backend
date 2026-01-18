@@ -11,7 +11,6 @@ async function addImage(objectKey, fileName) {
 
 async function getImages(){
   const res = await Image.find({});
-  console.log("images:::::::::",res);
   return [...res];
 }
 

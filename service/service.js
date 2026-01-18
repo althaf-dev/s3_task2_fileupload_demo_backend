@@ -69,14 +69,35 @@ async function getSignedCookiesFromCloudFront() {
   const ImagesFromDb = await getImages();
   const images = ImagesFromDb?.map(img=>({
     fileName:img.fileName,
-    objectKey:`${resource}/${img.objectKey}`
+    objectKey:`${resource}${img.objectKey}`
   }))
   
   return {cookies,images}
+}
+
+async function getSignedurlForImages(){
+  const ImagesFromDb = await getImages();
+
+    const s3 = new AWS.S3({
+    region: 'ap-south-1',
+  });
+console.log("images from db::;",ImagesFromDb)
+  const BUCKET = process.env.bucket;
+
+  const images = ImagesFromDb?.filter(img=>img.fileName.includes('.jpg'))?.map(img=>({
+    url: s3.getSignedUrl('getObject',{
+      Bucket:BUCKET,
+      Key:img.objectKey,
+      Expires:120
+    })
+  }));
+  console.log("images::;",images)
+  return images;
 }
 
 module.exports = {
   getPresigneds3url,
   storeKeysInDb,
   getSignedCookiesFromCloudFront,
+  getSignedurlForImages
 };
